@@ -1,3 +1,4 @@
+
 analyseSimulation <- function(dataFile) {
   
   library(pROC)
@@ -523,7 +524,5 @@ convergenceIteration <- function(dataFile="3_200_1000_50_10_2_5_Plain.rda_OUT_10
   rbind(nred, nredNoiseX, nredNoiseY, nredNoiseXNoiseY, nredAUC, nredAUCNoiseX, nredAUCNoiseY, nredAUCNoiseXNoiseY) #save values as matrix to use them analyse function
 }#end function
 
-#########################################
-###FOR LATER: put function into plots
-calculateCI <- function(input){
-}
+setwd("/naslx/projects/ua341/di49suy/sampled-boosting-test-2/mytest2D-files/jobs/02")
+analyseSimulation("2-result.RData")
