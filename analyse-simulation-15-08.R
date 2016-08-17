@@ -525,5 +525,5 @@ convergenceIteration <- function(dataFile="3_200_1000_50_10_2_5_Plain.rda_OUT_10
 }#end function
 
 setwd("/naslx/projects/ua341/di49suy/sampled-boosting-test-2/mytest-files/jobs/02")
-load("2-result.RData")
-analyseSimulation(result)
+load("actualresult")
+analyseSimulation(actualresult)
