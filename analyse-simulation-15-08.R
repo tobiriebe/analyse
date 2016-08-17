@@ -368,7 +368,7 @@ convergenceIteration <- function(dataFile="3_200_1000_50_10_2_5_Plain.rda_OUT_10
   sumAUCNoiseY <- matrix(0, nrow=redSteps, ncol = simulations) #sumAUC to stop reduction iteration
   sumAUCNoiseXNoiseY <- matrix(0, nrow=redSteps, ncol = simulations) #sumAUC to stop reduction iteration
   
-  
+  print(simulations)
   for (simulation in 1:simulations) {
     print(simulation)
     stopred <- 0
@@ -525,5 +525,5 @@ convergenceIteration <- function(dataFile="3_200_1000_50_10_2_5_Plain.rda_OUT_10
 }#end function
 
 setwd("/naslx/projects/ua341/di49suy/sampled-boosting-test-2/mytest-files/jobs/02")
-load("actualresult")
-analyseSimulation(actualresult)
+load("result.RData")
+analyseSimulation(result)
