@@ -283,7 +283,7 @@ analyseSimulation <- function(dataFile) {
   lines(CIAUCNoiseY2.5, col="red") #add CIs to plot
   lines(CIAUCNoiseY97.5, col="red")
   abline(h = sumAUCNoiseY[meanredAUCNoiseY], col = "green") #horizontal line that shows convergence
-  plot(sumAUCNoiseXNoiseY, ylim=range(sumAUCNoiseY, CIAUCNoiseXNoiseY97.5, CIAUCNoiseXNoiseY2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC for noisy X and noisy Y")
+  plot(sumAUCNoiseXNoiseY, ylim=range(sumAUCNoiseXNoiseY, CIAUCNoiseXNoiseY97.5, CIAUCNoiseXNoiseY2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC for noisy X and noisy Y")
   lines(CIAUCNoiseXNoiseY2.5, col="red") #add CIs to plot
   lines(CIAUCNoiseXNoiseY97.5, col="red")
   abline(h = sumAUCNoiseXNoiseY[meanredAUCNoiseXNoiseY], col = "green") #horizontal line that shows convergence
