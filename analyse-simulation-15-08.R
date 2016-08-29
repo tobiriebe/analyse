@@ -231,19 +231,19 @@ analyseSimulation <- function(dataFile) {
   
   #Plots
   pdf("plots.pdf") #save plot
-  plot(sumAbsErrors, ylim=range(sumAbsErrors, AbsErrorsCI97.5, AbsErrorsCI2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of absolute Errors", main = "Sum of absolute Errors")
+  plot(sumAbsErrors, xlim=fixedMstop, ylim=range(sumAbsErrors, AbsErrorsCI97.5, AbsErrorsCI2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of absolute Errors", main = "Sum of absolute Errors")
   lines(AbsErrorsCI97.5, col="red") #add CIs to plot
   lines(AbsErrorsCI2.5, col="red")
   abline(h = sumAbsErrors[meanred], col = "green") #horizontal line that shows convergence
-  plot(sumAbsErrorsNoiseX, ylim=range(sumAbsErrorsNoiseX, AbsErrorsNoiseXCI97.5, AbsErrorsNoiseXCI2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of absolute Errors", main = "Sum of absolute Errors for noisy X")
+  plot(sumAbsErrorsNoiseX, xlim=fixedMstop, ylim=range(sumAbsErrorsNoiseX, AbsErrorsNoiseXCI97.5, AbsErrorsNoiseXCI2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of absolute Errors", main = "Sum of absolute Errors for noisy X")
   lines(AbsErrorsNoiseXCI97.5, col="red") #add CIs to plot
   lines(AbsErrorsNoiseXCI2.5, col="red")
   abline(h = sumAbsErrorsNoiseX[meanredNoiseX], col = "green") #horizontal line that shows convergence
-  plot(sumAbsErrorsNoiseY ,ylim=range(sumAbsErrorsNoiseY, AbsErrorsNoiseYCI97.5, AbsErrorsNoiseYCI2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of absolute Errors", main = "Sum of absolute Errors for noisy Y")
+  plot(sumAbsErrorsNoiseY ,xlim=fixedMstop, ylim=range(sumAbsErrorsNoiseY, AbsErrorsNoiseYCI97.5, AbsErrorsNoiseYCI2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of absolute Errors", main = "Sum of absolute Errors for noisy Y")
   lines(AbsErrorsNoiseYCI97.5, col="red") #add CIs to plot
   lines(AbsErrorsNoiseYCI2.5, col="red")
   abline(h = sumAbsErrorsNoiseY[meanredNoiseY], col = "green") #horizontal line that shows convergence
-  plot(sumAbsErrorsNoiseXNoiseY ,ylim=range(sumAbsErrorsNoiseXNoiseY, AbsErrorsNoiseXNoiseYCI97.5, AbsErrorsNoiseXNoiseYCI2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of absolute Errors", main = "Sum of absolute Errors for noisy X and noisy Y")
+  plot(sumAbsErrorsNoiseXNoiseY, xlim=fixedMstop ,ylim=range(sumAbsErrorsNoiseXNoiseY, AbsErrorsNoiseXNoiseYCI97.5, AbsErrorsNoiseXNoiseYCI2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of absolute Errors", main = "Sum of absolute Errors for noisy X and noisy Y")
   lines(AbsErrorsNoiseXNoiseYCI97.5, col="red") #add CIs to plot
   lines(AbsErrorsNoiseXNoiseYCI2.5, col="red")
   abline(h = sumAbsErrorsNoiseXNoiseY[meanredNoiseXNoiseY], col = "green") #horizontal line that shows convergence
@@ -265,40 +265,40 @@ analyseSimulation <- function(dataFile) {
   
   
   #relative values (to the basic boosting)  
-  plot(sumAbsErrors/sumAbsErrors[1], main = "Relative value of absolute error to basic boosting ", type="l")
-  plot(sumAbsErrorsNoiseX/sumAbsErrorsNoiseX[1], main = "Relative value of absolute error to basic boosting ", type="l")
-  plot(sumAbsErrorsNoiseY/sumAbsErrorsNoiseY[1], main = "Relative value of absolute error to basic boosting ", type="l")
-  plot(sumAbsErrorsNoiseXNoiseY/sumAbsErrorsNoiseXNoiseY[1], main = "Relative value of absolute error to basic boosting ", type="l")
+  plot(sumAbsErrors/sumAbsErrors[1], main = "Relative value of absolute error to basic boosting ", type="l", xlim=fixedMstop)
+  plot(sumAbsErrorsNoiseX/sumAbsErrorsNoiseX[1], main = "Relative value of absolute error to basic boosting ", type="l", xlim=fixedMstop)
+  plot(sumAbsErrorsNoiseY/sumAbsErrorsNoiseY[1], main = "Relative value of absolute error to basic boosting ", type="l", xlim=fixedMstop)
+  plot(sumAbsErrorsNoiseXNoiseY/sumAbsErrorsNoiseXNoiseY[1], main = "Relative value of absolute error to basic boosting ", type="l", xlim=fixedMstop)
   
   
-  plot(sumAUC, ylim=range(sumAUC, CIAUC97.5, CIAUC2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC")
+  plot(sumAUC, xlim=fixedMstop, ylim=range(sumAUC, CIAUC97.5, CIAUC2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC")
   lines(CIAUC2.5, col="red") #add CIs to plot
   lines(CIAUC97.5, col="red")
   abline(h = sumAUC[meanredAUC], col = "green") #horizontal line that shows convergence
-  plot(sumAUCNoiseX, ylim=range(sumAUCNoiseX, CIAUCNoiseX97.5, CIAUCNoiseX2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC for noisy X")
+  plot(sumAUCNoiseX, xlim=fixedMstop, ylim=range(sumAUCNoiseX, CIAUCNoiseX97.5, CIAUCNoiseX2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC for noisy X")
   lines(CIAUCNoiseX2.5, col="red") #add CIs to plot
   lines(CIAUCNoiseX97.5, col="red")
   abline(h = sumAUCNoiseX[meanredAUCNoiseX], col = "green") #horizontal line that shows convergence
-  plot(sumAUCNoiseY, ylim=range(sumAUCNoiseY, CIAUCNoiseY97.5, CIAUCNoiseY2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC for noisy Y")
+  plot(sumAUCNoiseY, xlim=fixedMstop, ylim=range(sumAUCNoiseY, CIAUCNoiseY97.5, CIAUCNoiseY2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC for noisy Y")
   lines(CIAUCNoiseY2.5, col="red") #add CIs to plot
   lines(CIAUCNoiseY97.5, col="red")
   abline(h = sumAUCNoiseY[meanredAUCNoiseY], col = "green") #horizontal line that shows convergence
-  plot(sumAUCNoiseXNoiseY, ylim=range(sumAUCNoiseXNoiseY, CIAUCNoiseXNoiseY97.5, CIAUCNoiseXNoiseY2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC for noisy X and noisy Y")
+  plot(sumAUCNoiseXNoiseY, xlim=fixedMstop, ylim=range(sumAUCNoiseXNoiseY, CIAUCNoiseXNoiseY97.5, CIAUCNoiseXNoiseY2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC for noisy X and noisy Y")
   lines(CIAUCNoiseXNoiseY2.5, col="red") #add CIs to plot
   lines(CIAUCNoiseXNoiseY97.5, col="red")
   abline(h = sumAUCNoiseXNoiseY[meanredAUCNoiseXNoiseY], col = "green") #horizontal line that shows convergence
   #variance
   
-  plot(sumvariance, ylim=range(sumvariance, CIvariance2.5, CIvariance97.5), col='black', type = "l", xlab = "Iteration", ylab = "Sum of Variance", main = "Sum of Variance")
+  plot(sumvariance, xlim=fixedMstop, ylim=range(sumvariance, CIvariance2.5, CIvariance97.5), col='black', type = "l", xlab = "Iteration", ylab = "Sum of Variance", main = "Sum of Variance")
   lines(CIvariance97.5, col="red") #add CIs to plot
   lines(CIvariance2.5, col="red")
-  plot(sumvarianceNoiseX, ylim=range(sumvarianceNoiseX, CIvariance2.5NoiseX, CIvariance97.5NoiseX), col='black', type = "l", xlab = "Iteration", ylab = "Sum of Variance", main = "Sum of Variance for noisy X")
+  plot(sumvarianceNoiseX, xlim=fixedMstop, ylim=range(sumvarianceNoiseX, CIvariance2.5NoiseX, CIvariance97.5NoiseX), col='black', type = "l", xlab = "Iteration", ylab = "Sum of Variance", main = "Sum of Variance for noisy X")
   lines(CIvariance2.5NoiseX, col="red") #add CIs to plot
   lines(CIvariance97.5NoiseX, col="red")
-  plot(sumvarianceNoiseY, ylim=range(sumvarianceNoiseY, CIvariance2.5NoiseY, CIvariance97.5NoiseY), col='black', type = "l", xlab = "Iteration", ylab = "Sum of Variance", main = "Sum of Variance for noisy Y")
+  plot(sumvarianceNoiseY, xlim=fixedMstop, ylim=range(sumvarianceNoiseY, CIvariance2.5NoiseY, CIvariance97.5NoiseY), col='black', type = "l", xlab = "Iteration", ylab = "Sum of Variance", main = "Sum of Variance for noisy Y")
   lines(CIvariance2.5NoiseY, col="red") #add CIs to plot
   lines(CIvariance97.5NoiseY, col="red")
-  plot(sumvarianceNoiseXNoiseY, ylim=range(sumvarianceNoiseXNoiseY, CIvariance2.5NoiseXNoiseY, CIvariance97.5NoiseXNoiseY), col='black', type = "l", xlab = "Iteration", ylab = "Sum of Variance" , main = "Sum of Variance for noisy Y and noisy X")
+  plot(sumvarianceNoiseXNoiseY, xlim=fixedMstop, ylim=range(sumvarianceNoiseXNoiseY, CIvariance2.5NoiseXNoiseY, CIvariance97.5NoiseXNoiseY), col='black', type = "l", xlab = "Iteration", ylab = "Sum of Variance" , main = "Sum of Variance for noisy Y and noisy X")
   lines(CIvariance2.5NoiseXNoiseY, col="red") #add CIs to plot
   lines(CIvariance97.5NoiseXNoiseY, col="red")
   dev.off() #end of saving plot
