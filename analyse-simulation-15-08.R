@@ -265,10 +265,10 @@ analyseSimulation <- function(dataFile) {
   
   
   #relative values (to the basic boosting)  
-  plot(sumAbsErrors/sumAbsErrors[1], main = "Relative value of absolute error to basic boosting ", type="l")
-  plot(sumAbsErrorsNoiseX/sumAbsErrorsNoiseX[1], main = "Relative value of absolute error to basic boosting ", type="l")
-  plot(sumAbsErrorsNoiseY/sumAbsErrorsNoiseY[1], main = "Relative value of absolute error to basic boosting ", type="l")
-  plot(sumAbsErrorsNoiseXNoiseY/sumAbsErrorsNoiseXNoiseY[1], main = "Relative value of absolute error to basic boosting ", type="l")
+  plot(sumAbsErrors/sumAbsErrors[1], main = "Relative value of absolute error to basic boosting ")
+  plot(sumAbsErrorsNoiseX/sumAbsErrorsNoiseX[1], main = "Relative value of absolute error to basic boosting ")
+  plot(sumAbsErrorsNoiseY/sumAbsErrorsNoiseY[1], main = "Relative value of absolute error to basic boosting ")
+  plot(sumAbsErrorsNoiseXNoiseY/sumAbsErrorsNoiseXNoiseY[1], main = "Relative value of absolute error to basic boosting ")
   
   
   plot(sumAUC, ylim=range(sumAUC, CIAUC97.5, CIAUC2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC")
