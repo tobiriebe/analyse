@@ -168,7 +168,7 @@ analyseSimulation <- function(dataFile) {
     CIAUC <- CI(AUCNoiseY[reduction,]) #take all reductions steps over the simulations and calculate CI
     CIAUCNoiseY97.5[reduction] <- CIAUC[1] #upper CI
     CIAUCNoiseY2.5[reduction] <- CIAUC[3] #lower CI
-    CIAUC <- CI(AUCNoiseX[reduction,]) #take all reductions steps over the simulations and calculate CI
+    CIAUC <- CI(AUCNoiseXNoiseY[reduction,]) #take all reductions steps over the simulations and calculate CI
     CIAUCNoiseXNoiseY97.5[reduction] <- CIAUC[1] #upper CI
     CIAUCNoiseXNoiseY2.5[reduction] <- CIAUC[3] #lower CI
     
