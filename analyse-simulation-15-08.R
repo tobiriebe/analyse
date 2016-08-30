@@ -207,8 +207,19 @@ analyseSimulation <- function(dataFile) {
   
   redStepsconv <- convergenceIteration(data) #after how many reduction steps does boosting iteration converge
   
-  save(redStepsconv, AbsErrors, sumAbsErrors, sumAbsErrorsNoiseX, sumAbsErrorsNoiseY, sumAbsErrorsNoiseXNoiseY, 
-       sumAUC, sumAUCNoiseX, sumAUCNoiseY, sumAUCNoiseXNoiseY, sumvariance, sumvarianceNoiseX, 
+  save(redStepsconv, AbsErrors, 
+       sumAbsErrors, AbsErrorsCI97.5, AbsErrorsCI2.5, 
+       sumAbsErrorsNoiseX, AbsErrorsNoiseXCI97.5, AbsErrorsNoiseXCI2.5,
+       sumAbsErrorsNoiseY, AbsErrorsNoiseYCI97.5, AbsErrorsNoiseYCI2.5, 
+       sumAbsErrorsNoiseXNoiseY, AbsErrorsNoiseXNoiseYCI97.5, AbsErrorsNoiseXNoiseYCI2.5, 
+       sumAUC, CIAUC97.5, CIAUC2.5,
+       sumAUCNoiseX, CIAUCNoiseX97.5, CIAUCNoiseX2.5, 
+       sumAUCNoiseY, CIAUCNoiseY97.5, CIAUCNoiseY2.5,
+       sumAUCNoiseXNoiseY, CIAUCNoiseXNoiseY97.5, CIAUCNoiseXNoiseY2.5,
+       sumvariance, CIvariance2.5, CIvariance97.5, 
+       sumvarianceNoiseX, CIvariance2.5NoiseX, CIvariance97.5NoiseX, 
+       sumvarianceNoiseY, CIvariance2.5NoiseY, CIvariance97.5NoiseY,
+       sumvarianceNoiseXNoiseY, CIvariance2.5NoiseXNoiseY, CIvariance97.5NoiseXNoiseY,
        file = "EVAL.rda")
   
   nred <- redStepsconv[1,] #convergence of Iteration for AbsError
@@ -234,19 +245,19 @@ analyseSimulation <- function(dataFile) {
   plot(sumAbsErrors, ylim=range(sumAbsErrors, AbsErrorsCI97.5, AbsErrorsCI2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of absolute Errors", main = "Sum of absolute Errors")
   lines(AbsErrorsCI97.5, col="red") #add CIs to plot
   lines(AbsErrorsCI2.5, col="red")
-  abline(h = sumAbsErrors[meanred], col = "green") #horizontal line that shows convergence
+  #abline(h = sumAbsErrors[meanred], col = "green") #horizontal line that shows convergence
   plot(sumAbsErrorsNoiseX, ylim=range(sumAbsErrorsNoiseX, AbsErrorsNoiseXCI97.5, AbsErrorsNoiseXCI2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of absolute Errors", main = "Sum of absolute Errors for noisy X")
   lines(AbsErrorsNoiseXCI97.5, col="red") #add CIs to plot
   lines(AbsErrorsNoiseXCI2.5, col="red")
-  abline(h = sumAbsErrorsNoiseX[meanredNoiseX], col = "green") #horizontal line that shows convergence
+  #abline(h = sumAbsErrorsNoiseX[meanredNoiseX], col = "green") #horizontal line that shows convergence
   plot(sumAbsErrorsNoiseY, ylim=range(sumAbsErrorsNoiseY, AbsErrorsNoiseYCI97.5, AbsErrorsNoiseYCI2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of absolute Errors", main = "Sum of absolute Errors for noisy Y")
   lines(AbsErrorsNoiseYCI97.5, col="red") #add CIs to plot
   lines(AbsErrorsNoiseYCI2.5, col="red")
-  abline(h = sumAbsErrorsNoiseY[meanredNoiseY], col = "green") #horizontal line that shows convergence
+  #abline(h = sumAbsErrorsNoiseY[meanredNoiseY], col = "green") #horizontal line that shows convergence
   plot(sumAbsErrorsNoiseXNoiseY, ylim=range(sumAbsErrorsNoiseXNoiseY, AbsErrorsNoiseXNoiseYCI97.5, AbsErrorsNoiseXNoiseYCI2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of absolute Errors", main = "Sum of absolute Errors for noisy X and noisy Y")
   lines(AbsErrorsNoiseXNoiseYCI97.5, col="red") #add CIs to plot
   lines(AbsErrorsNoiseXNoiseYCI2.5, col="red")
-  abline(h = sumAbsErrorsNoiseXNoiseY[meanredNoiseXNoiseY], col = "green") #horizontal line that shows convergence
+  #abline(h = sumAbsErrorsNoiseXNoiseY[meanredNoiseXNoiseY], col = "green") #horizontal line that shows convergence
   
   # #relative values (to the basic boosting) for first and last simulation
   # plot(AbsErrors[,simulations]/AbsErrors[1, simulations], ylim=range(AbsErrors[,simulations]/AbsErrors[1, simulations], AbsErrors[,1]/AbsErrors[1, 1]), type="l", main = "Relative value of absolute error to basic boosting (first and last simulation)", xlab = "Iteration", ylab = "Relative value")
@@ -274,19 +285,19 @@ analyseSimulation <- function(dataFile) {
   plot(sumAUC, ylim=range(sumAUC, CIAUC97.5, CIAUC2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC")
   lines(CIAUC2.5, col="red") #add CIs to plot
   lines(CIAUC97.5, col="red")
-  abline(h = sumAUC[meanredAUC], col = "green") #horizontal line that shows convergence
+  #abline(h = sumAUC[meanredAUC], col = "green") #horizontal line that shows convergence
   plot(sumAUCNoiseX, ylim=range(sumAUCNoiseX, CIAUCNoiseX97.5, CIAUCNoiseX2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC for noisy X")
   lines(CIAUCNoiseX2.5, col="red") #add CIs to plot
   lines(CIAUCNoiseX97.5, col="red")
-  abline(h = sumAUCNoiseX[meanredAUCNoiseX], col = "green") #horizontal line that shows convergence
+  #abline(h = sumAUCNoiseX[meanredAUCNoiseX], col = "green") #horizontal line that shows convergence
   plot(sumAUCNoiseY, ylim=range(sumAUCNoiseY, CIAUCNoiseY97.5, CIAUCNoiseY2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC for noisy Y")
   lines(CIAUCNoiseY2.5, col="red") #add CIs to plot
   lines(CIAUCNoiseY97.5, col="red")
-  abline(h = sumAUCNoiseY[meanredAUCNoiseY], col = "green") #horizontal line that shows convergence
+  #abline(h = sumAUCNoiseY[meanredAUCNoiseY], col = "green") #horizontal line that shows convergence
   plot(sumAUCNoiseXNoiseY, ylim=range(sumAUCNoiseXNoiseY, CIAUCNoiseXNoiseY97.5, CIAUCNoiseXNoiseY2.5), col='black', type="l", xlab = "Iteration", ylab = "Sum of AUC", main = "Sum aof AUC for noisy X and noisy Y")
   lines(CIAUCNoiseXNoiseY2.5, col="red") #add CIs to plot
   lines(CIAUCNoiseXNoiseY97.5, col="red")
-  abline(h = sumAUCNoiseXNoiseY[meanredAUCNoiseXNoiseY], col = "green") #horizontal line that shows convergence
+  #abline(h = sumAUCNoiseXNoiseY[meanredAUCNoiseXNoiseY], col = "green") #horizontal line that shows convergence
   #variance
   
   plot(sumvariance, ylim=range(sumvariance, CIvariance2.5, CIvariance97.5), col='black', type = "l", xlab = "Iteration", ylab = "Sum of Variance", main = "Sum of Variance")
@@ -527,3 +538,4 @@ convergenceIteration <- function(dataFile){
 setwd("/naslx/projects/ua341/di49suy/sampled-boosting-test-5/mytest-files/jobs/03")
 load("result.RData")
 analyseSimulation(result)
+
