@@ -207,15 +207,17 @@ analyseSimulation <- function(dataFile) {
   
   redStepsconv <- convergenceIteration(data) #after how many reduction steps does boosting iteration converge
   
-  save(redStepsconv, AbsErrors, 
+  save(redStepsconv, AbsErrors, AbsErrorsNoiseX, AbsErrorsNoiseY, AbsErrorsNoiseXNoiseY,
        sumAbsErrors, AbsErrorsCI97.5, AbsErrorsCI2.5, 
        sumAbsErrorsNoiseX, AbsErrorsNoiseXCI97.5, AbsErrorsNoiseXCI2.5,
        sumAbsErrorsNoiseY, AbsErrorsNoiseYCI97.5, AbsErrorsNoiseYCI2.5, 
        sumAbsErrorsNoiseXNoiseY, AbsErrorsNoiseXNoiseYCI97.5, AbsErrorsNoiseXNoiseYCI2.5, 
+       AUCsb, AUCNoiseX, AUCNoiseY, AUCNoiseXNoiseY,
        sumAUC, CIAUC97.5, CIAUC2.5,
        sumAUCNoiseX, CIAUCNoiseX97.5, CIAUCNoiseX2.5, 
        sumAUCNoiseY, CIAUCNoiseY97.5, CIAUCNoiseY2.5,
        sumAUCNoiseXNoiseY, CIAUCNoiseXNoiseY97.5, CIAUCNoiseXNoiseY2.5,
+       variance, varianceNoiseX, varianceNoiseY, varianceNoiseXNoiseY,
        sumvariance, CIvariance2.5, CIvariance97.5, 
        sumvarianceNoiseX, CIvariance2.5NoiseX, CIvariance97.5NoiseX, 
        sumvarianceNoiseY, CIvariance2.5NoiseY, CIvariance97.5NoiseY,
