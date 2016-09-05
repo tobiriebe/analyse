@@ -537,7 +537,7 @@ convergenceIteration <- function(dataFile){
   rbind(nred, nredNoiseX, nredNoiseY, nredNoiseXNoiseY, nredAUC, nredAUCNoiseX, nredAUCNoiseY, nredAUCNoiseXNoiseY) #save values as matrix to use them analyse function
 }#end function
 
-setwd("/naslx/projects/ua341/di49suy/signal-noise-ratio/mytest-files/jobs/07")
-load("7-result.RData")
+setwd("/naslx/projects/ua341/di49suy/signal-noise-ratio/mytest-files/jobs/08")
+load("8-result.RData")
 analyseSimulation(result)
 
